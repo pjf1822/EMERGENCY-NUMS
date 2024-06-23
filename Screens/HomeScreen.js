@@ -4,16 +4,11 @@ import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
 import * as Location from "expo-location";
 
-// Step one get User Location
-// Step two get the location country code wuth the coordinates
-// Step three call the emeergency number api
-
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [coords, setCoords] = useState({ latitude: null, longitude: null });
   const [countryCode, setCountryCode] = useState(null);
   const [country, setCountry] = useState(null);
-
   const [countryNumbersObject, setCountryNumbersObject] = useState({
     ambulance: "",
     dispatch: "",
@@ -66,7 +61,7 @@ const HomeScreen = () => {
 
   return (
     <View>
-      <Text>YOU ARE INn </Text>
+      <Text>YOU ARE IN </Text>
       <Text>{country}</Text>
       <MainDetailForm data={countryNumbersObject} />
     </View>

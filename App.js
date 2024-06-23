@@ -13,6 +13,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaView style={{ flex: 1 }}>
         <RootSiblingParent>
+          <View style={{ height: 70 }} />
           <NavigationContainer>
             <NavWrapper />
           </NavigationContainer>
