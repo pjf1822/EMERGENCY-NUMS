@@ -61,7 +61,7 @@ const HomeScreen = () => {
 
   return (
     <View>
-      <Text>YOU ARE IN </Text>
+      <Text style={{ fontFamily: "Raleway", color: "black" }}>YOU ARE IN </Text>
       <Text>{country}</Text>
       <MainDetailForm data={countryNumbersObject} />
     </View>
