@@ -10,11 +10,12 @@ const NavBar = () => {
   return (
     <View
       style={{
-        height: 70,
+        height: 80,
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "flex-end",
-        backgroundColor: mainColors.lighterBlue,
+        backgroundColor: mainColors.gray,
+        paddingBottom: 10,
       }}
     >
       <TouchableOpacity
@@ -24,7 +25,7 @@ const NavBar = () => {
         <Feather
           name="settings"
           size={24}
-          color="black"
+          color={mainColors.normalBlue}
           // backgroundColor="green"
           paddingRight="10px"
         />

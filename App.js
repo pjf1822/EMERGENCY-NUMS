@@ -18,7 +18,7 @@ export default function App() {
     async function prepare() {
       try {
         await Font.loadAsync({
-          Raleway: require("./assets/Raleway-VariableFont_wght.ttf"),
+          Raleway: require("./assets/HindSiliguri-Regular.ttf"),
         });
       } catch (e) {
         console.warn(e);

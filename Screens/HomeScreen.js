@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
@@ -65,31 +65,56 @@ const HomeScreen = () => {
       style={{
         backgroundColor: mainColors.darkBlue,
         flex: 1,
+        alignItems: "center",
       }}
     >
       <Image
-        source={require("../assets/logo.png")}
-        style={{ height: 180, width: 190 }}
+        source={require("../assets/logo-no-background-cropped-again.png")}
+        style={{ height: 130, width: 130, marginTop: 40, objectFit: "contain" }}
       />
-      {/* <Text
+      <Text
         style={{
           fontSize: 40,
           fontFamily: regFont.mainFont,
           color: mainColors.niceBlue,
+          marginBottom: 30,
         }}
       >
         SAFE TRAVELS
-      </Text> */}
-      <Text
-        style={{ fontFamily: regFont.mainFont, color: mainColors.niceBlue }}
-      >
-        YOU ARE IN
       </Text>
-      <Text
-        style={{ fontFamily: regFont.mainFont, color: mainColors.niceBlue }}
+      <View
+        style={{
+          backgroundColor: mainColors.lighterBlue,
+          paddingTop: 40,
+          paddingBottom: 40,
+          paddingLeft: 10,
+          width: "80%",
+          borderRadius: 10,
+          marginBottom: 20,
+        }}
       >
-        {country}
-      </Text>
+        <Text
+          style={{
+            fontFamily: regFont.mainFont,
+            color: mainColors.niceBlue,
+            fontSize: 24,
+            textAlign: "center",
+          }}
+        >
+          YOU ARE IN
+        </Text>
+        <Text
+          style={{
+            fontFamily: regFont.mainFont,
+            color: mainColors.niceBlue,
+            textAlign: "center",
+            fontSize: 20,
+          }}
+        >
+          {country}
+        </Text>
+      </View>
+
       <MainDetailForm data={countryNumbersObject} />
     </View>
   );

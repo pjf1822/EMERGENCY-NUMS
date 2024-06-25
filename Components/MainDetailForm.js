@@ -1,5 +1,7 @@
 import { View, Text, Linking, TouchableOpacity } from "react-native";
 import React from "react";
+import { mainColors } from "../theme";
+import FormEntry from "./FormEntry";
 
 const MainDetailForm = ({ data }) => {
   const handlePhonePress = () => {
@@ -7,29 +9,25 @@ const MainDetailForm = ({ data }) => {
     const phoneURL = `tel://17819275600`;
     Linking.openURL(phoneURL);
   };
+
   return (
-    <View>
-      <TouchableOpacity onPress={handlePhonePress}>
-        <Text>hey</Text>
-      </TouchableOpacity>
-      <View>
-        <Text style={{ fontFamily: "Raleway", color: "black" }}>
-          Ambulance:
-        </Text>
-        <Text>{data?.ambulance}</Text>
-      </View>
-      <View>
-        <Text style={{ fontFamily: "Raleway", color: "black" }}>Fire:</Text>
-        <Text>{data?.fire}</Text>
-      </View>
-      <View>
-        <Text>Police:</Text>
-        <Text>{data?.police}</Text>
-      </View>
-      <View>
-        <Text>dispatch:</Text>
-        <Text>{data?.dispatch}</Text>
-      </View>
+    <View
+      style={{
+        borderWidth: 4,
+        borderColor: mainColors.niceBlue,
+        paddingLeft: 10,
+        borderRadius: 10,
+        width: "60%",
+      }}
+    >
+      <FormEntry
+        number={data.ambulance}
+        title={"Ambulance"}
+        underline={"yes"}
+      />
+      <FormEntry number={data.fire} title={"Fire"} underline={"yes"} />
+      <FormEntry number={data.police} title={"Police"} underline={"yes"} />
+      <FormEntry number={data.dispatch} title={"Dispatch"} underline={"no"} />
     </View>
   );
 };
