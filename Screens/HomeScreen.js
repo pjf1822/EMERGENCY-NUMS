@@ -1,8 +1,9 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
 import * as Location from "expo-location";
+import { mainColors, regFont } from "../theme";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,9 +61,35 @@ const HomeScreen = () => {
   );
 
   return (
-    <View>
-      <Text style={{ fontFamily: "Raleway", color: "black" }}>YOU ARE IN </Text>
-      <Text>{country}</Text>
+    <View
+      style={{
+        backgroundColor: mainColors.darkBlue,
+        flex: 1,
+      }}
+    >
+      <Image
+        source={require("../assets/logo.png")}
+        style={{ height: 180, width: 190 }}
+      />
+      {/* <Text
+        style={{
+          fontSize: 40,
+          fontFamily: regFont.mainFont,
+          color: mainColors.niceBlue,
+        }}
+      >
+        SAFE TRAVELS
+      </Text> */}
+      <Text
+        style={{ fontFamily: regFont.mainFont, color: mainColors.niceBlue }}
+      >
+        YOU ARE IN
+      </Text>
+      <Text
+        style={{ fontFamily: regFont.mainFont, color: mainColors.niceBlue }}
+      >
+        {country}
+      </Text>
       <MainDetailForm data={countryNumbersObject} />
     </View>
   );

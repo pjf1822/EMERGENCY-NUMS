@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { NavWrapper } from "./Navigation/NavWrapper";
 import { useEffect, useState } from "react";
 import * as Font from "expo-font";
+import NavBar from "./Components/NavBar";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -36,8 +37,8 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaView style={{ flex: 1 }}>
         <RootSiblingParent>
-          <View style={{ height: 70 }} />
           <NavigationContainer>
+            <NavBar />
             <NavWrapper />
           </NavigationContainer>
         </RootSiblingParent>
