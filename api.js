@@ -68,3 +68,35 @@ export const useFetchCountryDetails = (
     }
   );
 };
+
+export const useFetchHospitals = (coords) => {
+  return useQuery(
+    ["hospitals", { coords }],
+    async () => {
+      console.log(coords);
+      const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords?.latitude.toFixed(
+        4
+      )},${coords?.longitude.toFixed(
+        4
+      )}&radius=500&type=hospital&key=AIzaSyC6FDK9bSzrd1oA-8nDQbkdkI-wUPU2Bbw`;
+      const res = await fetch(`${url}`);
+
+      if (!res.ok) {
+        const errorResponse = await res.json();
+        throw new Error(
+          errorResponse.message || "Failed to fetch hosptial data"
+        );
+      }
+      return res.json();
+    },
+    {
+      enabled: !!coords.latitude,
+      onSuccess: (data) => {
+        console.log("we ran", data.results[0]);
+      },
+      onError: (error) => {
+        console.error("Error fetching emergency numbers:", error);
+      },
+    }
+  );
+};
