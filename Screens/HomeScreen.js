@@ -4,6 +4,7 @@ import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
 import * as Location from "expo-location";
 import { mainColors, regFont } from "../theme";
+import Hospital from "../Components/Hospital";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -116,6 +117,7 @@ const HomeScreen = () => {
       </View>
 
       <MainDetailForm data={countryNumbersObject} />
+      <Hospital coords={coords} />
     </View>
   );
 };
