@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { GEOCODE_API_KEYY } from "@env";
+import { GEOCODE_API_KEY, GOOGLE_API_KEY } from "@env";
 
 export const useGetCountryCode = (
   latitude,
@@ -10,7 +10,7 @@ export const useGetCountryCode = (
   return useQuery(
     ["countryCode", { latitude, longitude }],
     async () => {
-      const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${GEOCODE_API_KEYY}`;
+      const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${GEOCODE_API_KEY}`;
 
       const res = await fetch(apiUrl);
       if (!res.ok) {
@@ -78,7 +78,7 @@ export const useFetchHospitals = (coords) => {
         4
       )},${coords?.longitude.toFixed(
         4
-      )}&radius=500&type=hospital&key=AIzaSyC6FDK9bSzrd1oA-8nDQbkdkI-wUPU2Bbw`;
+      )}&radius=500&type=hospital&key=${GOOGLE_API_KEY}`;
       const res = await fetch(`${url}`);
 
       if (!res.ok) {

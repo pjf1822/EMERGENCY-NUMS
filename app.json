@@ -4,12 +4,12 @@
     "slug": "emergencies",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#25274D"
     },
     "plugins": [
       [
@@ -20,7 +20,16 @@
       ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon":"./assets/logo.png",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "buildNumber":true,
+      "infoPlist": {
+        "CFBundleIconName": "logito",
+        "NSLocationWhenInUseUsageDescription": "The app uses your location to grab your coordinates and tell what country you are in and what you have for local resources"
+      }
     },
     "android": {
       "adaptiveIcon": {
