@@ -1,57 +1,89 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 import { useFetchHospitals } from "../api";
 import { mainColors, regFont } from "../theme";
 import { calculateDistance } from "../helpers";
 
-const Hospital = ({ coords }) => {
+const Hospital = ({ coords, countryCode }) => {
   const { data } = useFetchHospitals(coords);
 
+  console.log(countryCode, "the code", typeof countryCode);
+  const openInMaps = (address) => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      address
+    )}`;
+    Linking.openURL(url);
+  };
+
   return (
-    <View>
-      <Text
+    <View style={{ width: "90%", paddingTop: 20, flex: 1 }}>
+      <View
         style={{
-          fontFamily: regFont.mainFont,
-          color: mainColors.normalBlue,
-          fontSize: 18,
-          fontWeight: "600",
+          backgroundColor: mainColors.normalBlue,
+          borderRadius: "50%",
+          marginBottom: 15,
         }}
       >
-        Hospitals closest to you
-      </Text>
+        <Text
+          style={{
+            fontFamily: regFont.mainFont,
+            color: mainColors.niceBlue,
+            fontSize: 28,
+            fontWeight: "600",
+            textAlign: "center",
+          }}
+        >
+          Hospitals near you
+        </Text>
+      </View>
+
       <FlatList
         data={data?.results}
+        style={{ maxHeight: "100%" }}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item?.reference}
         renderItem={({ item }) => (
-          <View
+          <TouchableOpacity
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
               justifyContent: "space-between",
               borderBottomWidth: "2px",
               borderBottomColor: mainColors.gray,
+              paddingTop: 8,
+              paddingBottom: 8,
             }}
+            onPress={() => openInMaps(item?.vicinity)}
           >
             <Text
               style={{
                 fontFamily: regFont.mainFont,
                 color: mainColors.niceBlue,
-                fontSize: 12,
+                fontSize: 19,
                 fontWeight: "600",
+                maxWidth: "65%",
               }}
             >
               {item?.name}
             </Text>
-            <Text>
+            <Text
+              style={{
+                fontFamily: regFont.mainFont,
+                color: mainColors.niceBlue,
+                fontSize: 19,
+                fontWeight: "600",
+              }}
+            >
               {calculateDistance(
-                coords.latitude,
-                coords.longitude,
-                item.geometry.location.lat,
-                item.geometry.location.lng
+                coords?.latitude,
+                coords?.longitude,
+                item?.geometry?.location?.lat,
+                item?.geometry?.location?.lng,
+                countryCode
               )}{" "}
-              kms away
+              {countryCode === "US" ? "miles away" : "kms away"}
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>

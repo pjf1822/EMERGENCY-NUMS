@@ -20,7 +20,7 @@ export const useGetCountryCode = (
       return res.json();
     },
     {
-      enabled: !!latitude && !!longitude, // Enable the query only if latitude and longitude are provided
+      enabled: !!latitude && !!longitude,
       onSuccess: (data) => {
         setCountry(data?.results[0].components.country);
         setCountryCode(data?.results[0].components["ISO_3166-1_alpha-2"]);
@@ -73,12 +73,11 @@ export const useFetchHospitals = (coords) => {
   return useQuery(
     ["hospitals", { coords }],
     async () => {
-      console.log(coords, "the coords in the hosptial functions");
       const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords?.latitude.toFixed(
         4
       )},${coords?.longitude.toFixed(
         4
-      )}&radius=5000&type=hospital&key=${GOOGLE_API_KEY}`;
+      )}&radius=50000&type=hospital&key=${GOOGLE_API_KEY}`;
       const res = await fetch(`${url}`);
 
       if (!res.ok) {
@@ -92,7 +91,7 @@ export const useFetchHospitals = (coords) => {
     {
       enabled: !!coords.latitude,
       onSuccess: (data) => {
-        console.log("we ran", data?.results?.length);
+        // console.log("we ran", data?.results);
       },
       onError: (error) => {
         console.error("Error fetching emergency numbers:", error);

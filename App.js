@@ -8,6 +8,7 @@ import { NavWrapper } from "./Navigation/NavWrapper";
 import { useEffect, useRef, useState } from "react";
 import * as Font from "expo-font";
 import NavBar from "./Components/NavBar";
+import { mainColors } from "./theme";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -38,7 +39,10 @@ export default function App() {
       <SafeAreaView style={{ flex: 1 }}>
         <RootSiblingParent>
           <NavigationContainer>
-            <NavBar />
+            {/* <NavBar /> */}
+            <View
+              style={{ height: 30, backgroundColor: mainColors.darkBlue }}
+            ></View>
             <NavWrapper />
           </NavigationContainer>
         </RootSiblingParent>

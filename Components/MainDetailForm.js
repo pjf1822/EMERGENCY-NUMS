@@ -17,7 +17,7 @@ const MainDetailForm = ({ data }) => {
         borderColor: mainColors.niceBlue,
         paddingLeft: 10,
         borderRadius: 10,
-        width: "60%",
+        flex: 1.3,
       }}
     >
       <FormEntry

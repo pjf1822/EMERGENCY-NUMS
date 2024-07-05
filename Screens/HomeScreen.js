@@ -5,6 +5,7 @@ import MainDetailForm from "../Components/MainDetailForm";
 import * as Location from "expo-location";
 import { mainColors, regFont } from "../theme";
 import Hospital from "../Components/Hospital";
+import YouAreIn from "../Components/YouAreIn";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -79,47 +80,26 @@ const HomeScreen = () => {
           fontFamily: regFont.mainFont,
           color: mainColors.niceBlue,
           marginBottom: 15,
+          textAlign: "center",
         }}
       >
-        SAFE TRAVELS
+        GLOBAL EMERGENCY RESOURCES
       </Text>
+
       <View
         style={{
-          backgroundColor: mainColors.lighterBlue,
-          paddingTop: 10,
-          paddingBottom: 10,
-          paddingLeft: 10,
-          width: "80%",
-          borderRadius: 10,
-          marginBottom: 20,
+          display: "flex",
+          flexDirection: "row",
+          width: "90%",
+          alignItems: "center",
+          marginBottom: 30,
         }}
       >
-        <Text
-          style={{
-            fontFamily: regFont.mainFont,
-            color: mainColors.niceBlue,
-            fontSize: 24,
-            textAlign: "center",
-          }}
-        >
-          YOU ARE IN
-        </Text>
-        <Text
-          style={{
-            fontFamily: regFont.mainFont,
-            color: mainColors.niceBlue,
-            textAlign: "center",
-            fontSize: 20,
-          }}
-        >
-          {country}
-        </Text>
-      </View>
-
-      <View style={{ display: "flex", flexDirection: "row" }}>
+        <YouAreIn country={country} />
         <MainDetailForm data={countryNumbersObject} />
-        <Hospital coords={coords} />
       </View>
+      <Hospital coords={coords} countryCode={countryCode} />
+      <View style={{ height: 40, backgroundColor: mainColors.darkBlue }}></View>
     </View>
   );
 };
