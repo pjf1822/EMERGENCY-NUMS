@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { NavWrapper } from "./Navigation/NavWrapper";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as Font from "expo-font";
 import NavBar from "./Components/NavBar";
 

@@ -78,7 +78,7 @@ const HomeScreen = () => {
           fontSize: 40,
           fontFamily: regFont.mainFont,
           color: mainColors.niceBlue,
-          marginBottom: 30,
+          marginBottom: 15,
         }}
       >
         SAFE TRAVELS
@@ -86,8 +86,8 @@ const HomeScreen = () => {
       <View
         style={{
           backgroundColor: mainColors.lighterBlue,
-          paddingTop: 40,
-          paddingBottom: 40,
+          paddingTop: 10,
+          paddingBottom: 10,
           paddingLeft: 10,
           width: "80%",
           borderRadius: 10,
@@ -116,8 +116,10 @@ const HomeScreen = () => {
         </Text>
       </View>
 
-      <MainDetailForm data={countryNumbersObject} />
-      <Hospital coords={coords} />
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <MainDetailForm data={countryNumbersObject} />
+        <Hospital coords={coords} />
+      </View>
     </View>
   );
 };

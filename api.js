@@ -73,12 +73,12 @@ export const useFetchHospitals = (coords) => {
   return useQuery(
     ["hospitals", { coords }],
     async () => {
-      console.log(coords);
+      console.log(coords, "the coords in the hosptial functions");
       const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords?.latitude.toFixed(
         4
       )},${coords?.longitude.toFixed(
         4
-      )}&radius=500&type=hospital&key=${GOOGLE_API_KEY}`;
+      )}&radius=5000&type=hospital&key=${GOOGLE_API_KEY}`;
       const res = await fetch(`${url}`);
 
       if (!res.ok) {
@@ -92,7 +92,7 @@ export const useFetchHospitals = (coords) => {
     {
       enabled: !!coords.latitude,
       onSuccess: (data) => {
-        console.log("we ran", data.results[0]);
+        console.log("we ran", data?.results?.length);
       },
       onError: (error) => {
         console.error("Error fetching emergency numbers:", error);

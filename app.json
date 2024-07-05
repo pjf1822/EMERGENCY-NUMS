@@ -17,8 +17,6 @@
         {
           "locationWhenInUsePermission": "Allow da app to use your location."
         }
-      ],[
-        "expo-notifications"
       ]
     ],
     "ios": {
@@ -27,11 +25,10 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "7",
+      "buildNumber": "8",
       "infoPlist": {
         "CFBundleIconName": "logito",
-        "NSLocationWhenInUseUsageDescription": "The app uses your location to grab your coordinates and tell what country you are in and what you have for local resources",
-        "aps-environment": "production"
+        "NSLocationWhenInUseUsageDescription": "The app uses your location to grab your coordinates and tell what country you are in and what you have for local resources"
       },
       "bundleIdentifier": "com.pjf1822.emergencies"
     },
