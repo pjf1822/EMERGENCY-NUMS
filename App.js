@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import * as Font from "expo-font";
 import NavBar from "./Components/NavBar";
 import { mainColors } from "./theme";
+import HomeScreen from "./Screens/HomeScreen";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -46,13 +47,9 @@ export default function App() {
       <SafeAreaView style={{ flex: 1 }}>
         <RootSiblingParent>
           <NavigationContainer>
-            <NavBar />
-            <View
-              style={{ height: 300, backgroundColor: mainColors.darkBlue }}
-            ></View>
-            <NavWrapper />
-            <Text>working</Text>
-            <Text>working</Text>
+            {/* <NavBar /> */}
+            {/* <NavWrapper /> */}
+            <HomeScreen />
           </NavigationContainer>
         </RootSiblingParent>
       </SafeAreaView>
