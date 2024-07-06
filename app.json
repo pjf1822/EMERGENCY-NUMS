@@ -7,7 +7,7 @@
     "icon": "./assets/loogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/gotoLogo.png",
+      "image": "./assets/loogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#25274D"
     },
