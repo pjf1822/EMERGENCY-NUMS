@@ -3,7 +3,6 @@ import React from "react";
 import { mainColors, regFont } from "../theme";
 
 const YouAreIn = ({ country }) => {
-  console.log(country);
   return (
     <View
       style={{
@@ -13,8 +12,11 @@ const YouAreIn = ({ country }) => {
         borderRadius: 10,
         marginBottom: 20,
         display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-end",
         justifyContent: "space-between",
-        flex: 1,
+        width: "100%",
+        // flex: 1,
       }}
     >
       <Text
@@ -25,14 +27,14 @@ const YouAreIn = ({ country }) => {
           textAlign: "center",
         }}
       >
-        YOU ARE IN
+        YOU ARE IN:
       </Text>
       <Text
         style={{
           fontFamily: regFont.mainFont,
           color: mainColors.gray,
           textAlign: "center",
-          fontSize: 20,
+          fontSize: 24,
         }}
       >
         {country}

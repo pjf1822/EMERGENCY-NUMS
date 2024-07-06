@@ -4,11 +4,13 @@ import { mainColors } from "../theme";
 import FormEntry from "./FormEntry";
 
 const MainDetailForm = ({ data }) => {
-  const handlePhonePress = () => {
+  const handlePhonePress = (value) => {
+    return;
     const phoneNumber = data?.phoneNumber?.replace(/\D/g, ""); // Remove non-numeric characters
-    const phoneURL = `tel://17819275600`;
+    const phoneURL = `tel://${value}`;
     Linking.openURL(phoneURL);
   };
+  const filteredEntries = Object.entries(data).filter(([key, value]) => value);
 
   return (
     <View
@@ -17,17 +19,23 @@ const MainDetailForm = ({ data }) => {
         borderColor: mainColors.niceBlue,
         paddingLeft: 10,
         borderRadius: 10,
-        flex: 1.3,
+        width: "100%",
       }}
     >
-      <FormEntry
-        number={data.ambulance}
-        title={"Ambulance"}
-        underline={"yes"}
-      />
-      <FormEntry number={data.fire} title={"Fire"} underline={"yes"} />
-      <FormEntry number={data.police} title={"Police"} underline={"yes"} />
-      <FormEntry number={data.dispatch} title={"Dispatch"} underline={"no"} />
+      {filteredEntries.map(([key, value], index) => {
+        const capitalizedTitle = key.charAt(0).toUpperCase() + key.slice(1);
+
+        return (
+          <TouchableOpacity key={key} onPress={() => handlePhonePress(value)}>
+            <FormEntry
+              key={value}
+              number={value}
+              title={capitalizedTitle}
+              underline={index !== filteredEntries.length - 1 ? "yes" : "no"}
+            />
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
