@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { RootSiblingParent } from "react-native-root-siblings";
@@ -9,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import * as Font from "expo-font";
 import NavBar from "./Components/NavBar";
 import { mainColors } from "./theme";
+import HomeScreen from "./Screens/HomeScreen";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -32,7 +32,15 @@ export default function App() {
   }, []);
 
   if (!appIsReady) {
-    return <Image source={require("./assets/favicon.png")} />;
+    return (
+      <View
+        style={{
+          height: "100%",
+          flex: 1,
+          backgroundColor: mainColors.darkBlue,
+        }}
+      ></View>
+    );
   }
   return (
     <QueryClientProvider client={queryClient}>
@@ -40,10 +48,8 @@ export default function App() {
         <RootSiblingParent>
           <NavigationContainer>
             {/* <NavBar /> */}
-            <View
-              style={{ height: 30, backgroundColor: mainColors.darkBlue }}
-            ></View>
-            <NavWrapper />
+            {/* <NavWrapper /> */}
+            <HomeScreen />
           </NavigationContainer>
         </RootSiblingParent>
       </SafeAreaView>

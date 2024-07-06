@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, ActivityIndicator } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
@@ -61,6 +61,21 @@ const HomeScreen = () => {
     setCountryNumbersObject,
     setIsLoading
   );
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          height: "100%",
+          flex: 1,
+          backgroundColor: mainColors.darkBlue,
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color="#29648A" />
+      </View>
+    );
+  }
 
   return (
     <View
@@ -72,7 +87,12 @@ const HomeScreen = () => {
     >
       <Image
         source={require("../assets/logo-no-background-cropped-again.png")}
-        style={{ height: 130, width: 130, marginTop: 40, objectFit: "contain" }}
+        style={{
+          height: 130,
+          width: 130,
+          marginTop: 40,
+          objectFit: "contain",
+        }}
       />
       <Text
         style={{
@@ -83,14 +103,14 @@ const HomeScreen = () => {
           textAlign: "center",
         }}
       >
-        GLOBAL EMERGENCY RESOURCES
+        Lifeline Global
       </Text>
 
       <View
         style={{
           display: "flex",
-          flexDirection: "row",
-          width: "90%",
+          flexDirection: "column",
+          width: "70%",
           alignItems: "center",
           marginBottom: 30,
         }}
