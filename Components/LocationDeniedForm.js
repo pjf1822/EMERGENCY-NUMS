@@ -12,7 +12,7 @@ import { mainColors, regFont } from "../theme";
 const LocationDeniedForm = () => {
   const openSettings = () => {
     if (Platform.OS === "ios") {
-      Linking.openURL("app-settings:");
+      Linking.openSettings();
     } else if (Platform.OS === "android") {
       Linking.openSettings();
     }
@@ -39,7 +39,7 @@ const LocationDeniedForm = () => {
       <TouchableOpacity onPress={openSettings}>
         <Text
           style={{
-            fontSize: 30,
+            fontSize: 25,
             fontFamily: regFont.mainFont,
             color: mainColors.niceBlue,
             textAlign: "center",

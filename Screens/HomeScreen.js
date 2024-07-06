@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Platform } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
@@ -76,9 +76,9 @@ const HomeScreen = () => {
       <Image
         source={require("../assets/loogo.png")}
         style={{
-          height: 130,
-          width: 130,
-          marginTop: 40,
+          height: Platform.isPad ? 200 : 160,
+          width: Platform.isPad ? 180 : 130,
+          marginTop: 50,
           objectFit: "contain",
         }}
       />

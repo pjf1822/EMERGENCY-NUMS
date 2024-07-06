@@ -5,7 +5,7 @@ import FormEntry from "./FormEntry";
 
 const MainDetailForm = ({ data }) => {
   const handlePhonePress = (value) => {
-    return;
+    // return;
     const phoneNumber = data?.phoneNumber?.replace(/\D/g, ""); // Remove non-numeric characters
     const phoneURL = `tel://${value}`;
     Linking.openURL(phoneURL);

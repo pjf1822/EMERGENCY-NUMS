@@ -1,6 +1,6 @@
-import { View, ActivityIndicator, Image } from "react-native";
+import { View, ActivityIndicator, Image, Text } from "react-native";
 import React from "react";
-import { mainColors } from "../theme";
+import { mainColors, regFont } from "../theme";
 
 const LoadingComponent = () => {
   return (
@@ -25,6 +25,17 @@ const LoadingComponent = () => {
         }}
       />
       <ActivityIndicator size="large" color="#29648A" />
+      <Text
+        style={{
+          fontSize: 23,
+          fontFamily: regFont.mainFont,
+          color: mainColors.niceBlue,
+          textAlign: "center",
+          marginTop: 19,
+        }}
+      >
+        Grabbing Local Emergency Data
+      </Text>
     </View>
   );
 };

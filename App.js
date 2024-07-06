@@ -36,9 +36,7 @@ export default function App() {
           flex: 1,
           backgroundColor: mainColors.darkBlue,
         }}
-      >
-        <Text></Text>
-      </View>
+      ></View>
     );
   }
   return (

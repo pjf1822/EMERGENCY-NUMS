@@ -7,6 +7,12 @@ import { calculateDistance } from "../helpers";
 const Hospital = ({ coords, countryCode }) => {
   const { data } = useFetchHospitals(coords);
 
+  const filteredData = data?.results.filter(
+    (item) =>
+      !item.name.toLowerCase().includes("dermatology") &&
+      !item.name.toLowerCase().includes("rehabilitation") &&
+      !item.name.toLowerCase().includes("phd")
+  );
   const openInMaps = (address) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       address
@@ -90,7 +96,7 @@ const Hospital = ({ coords, countryCode }) => {
       ></View>
 
       <FlatList
-        data={data?.results}
+        data={filteredData}
         style={{ maxHeight: "100%" }}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item?.reference}
