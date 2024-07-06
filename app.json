@@ -25,7 +25,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "16",
+      "buildNumber": "18",
       "infoPlist": {
         "CFBundleIconName": "loogo",
         "NSLocationWhenInUseUsageDescription": "The app uses your location to grab your coordinates and tell what country you are in and what you have for local resources"
