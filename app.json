@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Lifeline Global",
+    "name": "Lifeline-Global",
     "slug": "emergencies",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/loogo.png",
     "userInterfaceStyle": "light",
@@ -25,9 +25,8 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "21",
+      "buildNumber": "27",
       "infoPlist": {
-        "CFBundleIconName": "loogo",
         "NSLocationWhenInUseUsageDescription": "The app uses your location to grab your coordinates and tell what country you are in and what you have for local resources"
       },
       "bundleIdentifier": "com.pjf1822.emergencies"
