@@ -1,4 +1,4 @@
-import { View, Text, Image, ActivityIndicator } from "react-native";
+import { View, Text, Image, Platform } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFetchCountryDetails, useGetCountryCode } from "../api";
 import MainDetailForm from "../Components/MainDetailForm";
@@ -6,12 +6,15 @@ import * as Location from "expo-location";
 import { mainColors, regFont } from "../theme";
 import Hospital from "../Components/Hospital";
 import YouAreIn from "../Components/YouAreIn";
+import LocationDeniedForm from "../Components/LocationDeniedForm";
+import LoadingComponent from "../Components/LoadingComponent";
 
 const HomeScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [coords, setCoords] = useState({ latitude: null, longitude: null });
   const [countryCode, setCountryCode] = useState(null);
   const [country, setCountry] = useState(null);
+  const [locationDenied, setLocationDenied] = useState(false);
   const [countryNumbersObject, setCountryNumbersObject] = useState({
     ambulance: "",
     dispatch: "",
@@ -23,11 +26,15 @@ const HomeScreen = () => {
     setIsLoading(true);
     const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
+
       if (status !== "granted") {
+        setIsLoading(false);
+        setLocationDenied(true);
         setErrorMsg("Permission to access location was denied");
         return;
       }
 
+      setLocationDenied(false);
       let location = await Location.getCurrentPositionAsync({});
       setCoords({
         latitude: location?.coords?.latitude,
@@ -37,44 +44,25 @@ const HomeScreen = () => {
     getLocation();
   }, []);
 
-  const {
-    data: countryCodeData,
-    isSuccess: isCountryCodeSuccess,
-    isError: isCountryCodeError,
-    error: countryCodeError,
-    status: countryCodeStatus,
-  } = useGetCountryCode(
+  const {} = useGetCountryCode(
     coords.latitude,
     coords.longitude,
     setCountryCode,
     setCountry
   );
 
-  const {
-    data: countryNumbers,
-    isSuccess: isCountryNumbersSuccess,
-    isError: isCountryNumbersError,
-    error: countryNumbersError,
-    status: countryNumbersStatus,
-  } = useFetchCountryDetails(
+  const {} = useFetchCountryDetails(
     countryCode,
     setCountryNumbersObject,
     setIsLoading
   );
+
   if (isLoading) {
-    return (
-      <View
-        style={{
-          height: "100%",
-          flex: 1,
-          backgroundColor: mainColors.darkBlue,
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <ActivityIndicator size="large" color="#29648A" />
-      </View>
-    );
+    return <LoadingComponent />;
+  }
+
+  if (locationDenied) {
+    return <LocationDeniedForm />;
   }
 
   return (
@@ -86,11 +74,11 @@ const HomeScreen = () => {
       }}
     >
       <Image
-        source={require("../assets/logo-no-background-cropped-again.png")}
+        source={require("../assets/loogo.png")}
         style={{
-          height: 130,
-          width: 130,
-          marginTop: 40,
+          height: Platform.isPad ? 200 : 160,
+          width: Platform.isPad ? 180 : 130,
+          marginTop: 50,
           objectFit: "contain",
         }}
       />

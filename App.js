@@ -1,12 +1,9 @@
 import { StyleSheet, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { NavWrapper } from "./Navigation/NavWrapper";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import NavBar from "./Components/NavBar";
 import { mainColors } from "./theme";
 import HomeScreen from "./Screens/HomeScreen";
 
@@ -46,11 +43,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaView style={{ flex: 1 }}>
         <RootSiblingParent>
-          <NavigationContainer>
-            {/* <NavBar /> */}
-            {/* <NavWrapper /> */}
-            <HomeScreen />
-          </NavigationContainer>
+          <HomeScreen />
         </RootSiblingParent>
       </SafeAreaView>
     </QueryClientProvider>
