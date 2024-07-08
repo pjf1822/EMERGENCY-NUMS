@@ -1,10 +1,17 @@
-import { View, Text, FlatList, TouchableOpacity, Linking } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Linking,
+  ActivityIndicator,
+} from "react-native";
 import React from "react";
 import { useFetchHospitals } from "../api";
 import { mainColors, regFont } from "../theme";
 import { calculateDistance } from "../helpers";
 
-const Hospital = ({ coords, countryCode }) => {
+const Hospital = ({ coords, countryCode, isLoading }) => {
   const { data } = useFetchHospitals(coords);
 
   const filteredData = data?.results.filter(
@@ -95,13 +102,19 @@ const Hospital = ({ coords, countryCode }) => {
         }}
       ></View>
 
-      <FlatList
-        data={filteredData}
-        style={{ maxHeight: "100%" }}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item?.reference}
-        renderItem={renderItem}
-      />
+      {isLoading ? (
+        <View style={{ marginTop: 20 }}>
+          <ActivityIndicator size="large" color="#29648A" />
+        </View>
+      ) : (
+        <FlatList
+          data={filteredData}
+          style={{ maxHeight: "100%" }}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item?.reference}
+          renderItem={renderItem}
+        />
+      )}
     </View>
   );
 };

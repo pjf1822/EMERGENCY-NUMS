@@ -57,9 +57,9 @@ const HomeScreen = () => {
     setIsLoading
   );
 
-  if (isLoading) {
-    return <LoadingComponent />;
-  }
+  // if (isLoading) {
+  //   return <LoadingComponent />;
+  // }
 
   if (locationDenied) {
     return <LocationDeniedForm />;
@@ -103,10 +103,14 @@ const HomeScreen = () => {
           marginBottom: 30,
         }}
       >
-        <YouAreIn country={country} />
+        <YouAreIn country={country} isLoading={isLoading} />
         <MainDetailForm data={countryNumbersObject} />
       </View>
-      <Hospital coords={coords} countryCode={countryCode} />
+      <Hospital
+        coords={coords}
+        countryCode={countryCode}
+        isLoading={isLoading}
+      />
       <View style={{ height: 40, backgroundColor: mainColors.darkBlue }}></View>
     </View>
   );

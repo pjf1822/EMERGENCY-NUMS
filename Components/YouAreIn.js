@@ -1,8 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import React from "react";
 import { mainColors, regFont } from "../theme";
 
-const YouAreIn = ({ country }) => {
+const YouAreIn = ({ country, isLoading }) => {
   return (
     <View
       style={{
@@ -29,16 +29,20 @@ const YouAreIn = ({ country }) => {
       >
         YOU ARE IN:
       </Text>
-      <Text
-        style={{
-          fontFamily: regFont.mainFont,
-          color: mainColors.gray,
-          textAlign: "center",
-          fontSize: 24,
-        }}
-      >
-        {country}
-      </Text>
+      {isLoading ? (
+        <ActivityIndicator size="large" color="#29648A" />
+      ) : (
+        <Text
+          style={{
+            fontFamily: regFont.mainFont,
+            color: mainColors.gray,
+            textAlign: "center",
+            fontSize: 24,
+          }}
+        >
+          {country}
+        </Text>
+      )}
     </View>
   );
 };
