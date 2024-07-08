@@ -1,13 +1,14 @@
 {
-  "name": "Lifeline Global",
-  "version": "1.0.0",
+  "name": "Lifeline-Global",
+  "version": "1.1.0",
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build-local": "dotenv -- eas build -p ios --local --profile production"
+    "print-env": "dotenv -- node -e 'console.log(process.env)'",
+    "build-local": "dotenv -- eas build  --local --profile production "
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
