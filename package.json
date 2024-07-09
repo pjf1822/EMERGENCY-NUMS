@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "print-env": "dotenv -- node -e 'console.log(process.env)'",
-    "build-local": "dotenv -- eas build  --local --profile production "
+    "build-local": " eas build  --local --profile production "
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",

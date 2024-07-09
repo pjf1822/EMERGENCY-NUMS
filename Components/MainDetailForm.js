@@ -4,12 +4,6 @@ import { mainColors } from "../theme";
 import FormEntry from "./FormEntry";
 
 const MainDetailForm = ({ data }) => {
-  const handlePhonePress = (value) => {
-    // return;
-    const phoneNumber = data?.phoneNumber?.replace(/\D/g, ""); // Remove non-numeric characters
-    const phoneURL = `tel://${value}`;
-    Linking.openURL(phoneURL);
-  };
   const filteredEntries = Object.entries(data).filter(([key, value]) => value);
 
   return (
@@ -26,7 +20,7 @@ const MainDetailForm = ({ data }) => {
         const capitalizedTitle = key.charAt(0).toUpperCase() + key.slice(1);
 
         return (
-          <TouchableOpacity key={key} onPress={() => handlePhonePress(value)}>
+          <TouchableOpacity key={key}>
             <FormEntry
               key={value}
               number={value}
