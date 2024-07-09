@@ -25,6 +25,7 @@ const YouAreIn = ({ country, isLoading }) => {
           color: mainColors.niceBlue,
           fontSize: 24,
           textAlign: "center",
+          marginRight: 5,
         }}
       >
         YOU ARE IN:

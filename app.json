@@ -2,7 +2,7 @@
   "expo": {
     "name": "Lifeline Global",
     "slug": "emergencies",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/loogo.png",
     "userInterfaceStyle": "light",
@@ -25,7 +25,7 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "buildNumber": "31",
+      "buildNumber": "32",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "The app uses your location to determine your country and provide you with a list of local emergency resources, such as nearby hospitals"
       },
