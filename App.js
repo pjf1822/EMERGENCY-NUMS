@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -9,7 +9,6 @@ import HomeScreen from "./Screens/HomeScreen";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-
   const queryClient = new QueryClient();
 
   useEffect(() => {

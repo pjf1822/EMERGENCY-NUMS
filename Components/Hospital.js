@@ -38,7 +38,7 @@ const Hospital = ({ coords, countryCode, isLoading }) => {
           justifyContent: "space-between",
           paddingTop: 8,
           paddingBottom: 8,
-          borderBottomWidth: isLastItem ? 0 : 2, // Conditionally remove bottom border
+          borderBottomWidth: isLastItem ? 0 : 2,
           borderBottomColor: mainColors.normalBlue,
         }}
       >

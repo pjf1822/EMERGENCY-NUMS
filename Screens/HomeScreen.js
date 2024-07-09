@@ -7,7 +7,6 @@ import { mainColors, regFont } from "../theme";
 import Hospital from "../Components/Hospital";
 import YouAreIn from "../Components/YouAreIn";
 import LocationDeniedForm from "../Components/LocationDeniedForm";
-import LoadingComponent from "../Components/LoadingComponent";
 
 const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,10 +55,6 @@ const HomeScreen = () => {
     setCountryNumbersObject,
     setIsLoading
   );
-
-  // if (isLoading) {
-  //   return <LoadingComponent />;
-  // }
 
   if (locationDenied) {
     return <LocationDeniedForm />;
